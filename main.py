@@ -5,29 +5,12 @@ import platform
 
 import pygame as pg
 
+from draw import Color, Image, draw
+
 
 pg.init()
 
 # Declare globals.
-class Color:
-    BLACK = pg.Color(0, 0, 0)
-    DARK_GRAY = pg.Color(85, 85, 85)
-    LIGHT_GRAY = pg.Color(170, 170, 170)
-    WHITE = pg.Color(255, 255, 255)
-
-    RED = pg.Color(255, 0, 0)
-    GREEN = pg.Color(0, 255, 0)
-    BLUE = pg.Color(0, 0, 255)
-    CYAN = pg.Color(0, 255, 255)
-    MAGENTA = pg.Color(255, 0, 255)
-    YELLOW = pg.Color(255, 255, 0)
-
-    DARK_RED = pg.Color(128, 0, 0)
-    DARK_GREEN = pg.Color(0, 128, 0)
-    DARK_BLUE = pg.Color(0, 0, 128)
-    DARK_CYAN = pg.Color(0, 128, 128)
-    DARK_MAGENTA = pg.Color(128, 0, 128)
-    DARK_YELLOW = pg.Color(128, 64, 0)
 
 # Load assets.
 
@@ -58,6 +41,8 @@ async def main():
             for y in range(16):
                 if (x + y) % 2 == 0:
                     screen.fill(Color.DARK_GRAY, (x * 4, y * 4, 4, 4))
+        # Draw test image.
+        draw(screen, (4, 0), Image.GEM, (Color.RED,))
 
         pg.display.flip()
         await asyncio.sleep(0)
